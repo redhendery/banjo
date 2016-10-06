@@ -18,6 +18,12 @@
 
     <script type="text/babel">
 
+      var { Router,
+          Route,
+          IndexRoute,
+          IndexLink,
+          Link } = ReactRouter;
+
       var destination = document.querySelector("#container");
 
       var Home = React.createClass({
@@ -49,7 +55,7 @@
                 <li>Contact</li>
               </ul>
               <div className="content">
-                <Home/>
+                {this.props.children}
               </div>
             </div>
           )
@@ -57,13 +63,14 @@
       });
 
       ReactDOM.render(
-        <ReactRouter.Router>
-          <ReactRouter.Route path="/" component={App}>
-
-          </ReactRouter.Route>
-        </ReactRouter.Router>,
+        <Router>
+          <Route path="/" component={App}>
+            <IndexRoute component={Home}/>
+          </Route>
+        </Router>,
         destination
       );
+
     </script>
   </body>
 
